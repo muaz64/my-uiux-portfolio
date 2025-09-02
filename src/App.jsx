@@ -1,6 +1,97 @@
-import { useState, useEffect } from 'react';
-import { Mail, Linkedin, Github, Menu, X, Briefcase, Code, Star, User, Phone, MapPin, Download } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Mail, Linkedin, Github, Menu, X, Briefcase, Star, Phone, MapPin, Download } from 'lucide-react';
 import myDp from "./assets/muaz dp.jpg"
+
+// Starry Blob Background Component
+const BlobBackground = () => {
+  const blobs = Array.from({ length: 5 }).map((_, i) => ({
+    id: i,
+    size: Math.random() * (150 - 80) + 80, // Blob size between 80px and 150px
+    top: Math.random() * 100, // Random top position
+    left: Math.random() * 100, // Random left position
+    duration: Math.random() * (20 - 10) + 10, // Animation duration between 10s and 20s
+    delay: Math.random() * 5, // Animation delay up to 5s
+    color: `hsl(${Math.random() * 30 + 190}, 70%, 50%)`, // Shades of cyan/blue
+    opacity: Math.random() * (0.4 - 0.2) + 0.2, // Opacity between 0.2 and 0.4
+  }));
+
+  const stars = Array.from({ length: 50 }).map((_, i) => ({
+    id: i,
+    top: Math.random() * 100,
+    left: Math.random() * 100,
+    size: Math.random() * (2 - 0.5) + 0.5, // Star size between 0.5px and 2px
+    delay: Math.random() * 10,
+  }));
+
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {blobs.map(blob => (
+        <div
+          key={blob.id}
+          className="absolute rounded-full filter blur-xl opacity-40 animate-blob-move"
+          style={{
+            width: blob.size,
+            height: blob.size,
+            top: `${blob.top}%`,
+            left: `${blob.left}%`,
+            backgroundColor: blob.color,
+            animationDuration: `${blob.duration}s`,
+            animationDelay: `${blob.delay}s`,
+            opacity: blob.opacity,
+          }}
+        ></div>
+      ))}
+      {stars.map(star => (
+        <div
+          key={star.id}
+          className="absolute bg-white rounded-full animate-star-blink"
+          style={{
+            width: star.size,
+            height: star.size,
+            top: `${star.top}%`,
+            left: `${star.left}%`,
+            animationDelay: `${star.delay}s`,
+          }}
+        ></div>
+      ))}
+       {/* CSS for animations */}
+      <style>{`
+        @keyframes blob-move {
+          0%, 100% {
+            transform: translate(0, 0) scale(1);
+          }
+          33% {
+            transform: translate(calc(50vw - 100%), calc(50vh - 100%)) scale(1.1);
+          }
+          66% {
+            transform: translate(calc(20vw - 100%), calc(20vh - 100%)) scale(0.9);
+          }
+        }
+
+        @keyframes star-blink {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
+        }
+
+        /* Adjust blob-move for smaller screens to prevent overflow */
+        @media (max-width: 768px) {
+          @keyframes blob-move {
+            0%, 100% {
+              transform: translate(0, 0) scale(1);
+            }
+            33% {
+              transform: translate(calc(20vw - 100%), calc(20vh - 100%)) scale(1.1);
+            }
+            66% {
+              transform: translate(calc(10vw - 100%), calc(10vh - 100%)) scale(0.9);
+            }
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 
 // Main App Component
 export default function App() {
@@ -54,7 +145,13 @@ export default function App() {
       name: " Marvel OTT UI Concept ", 
       description: "This UI/UX concept is a Marvel-themed OTT (Over-The-Top) streaming platform designed to deliver a sleek, cinematic, and user-friendly experience for superhero fans. The layout is clean, highly visual, and responsive, making it ideal for desktop and smart TV screens.", 
       image: "/images/js-projects.png", 
-      link: "https://github.com/your-username/mini-js-projects" 
+      link: "https://www.figma.com/community/file/1494752200040659323/ott-project" 
+    },
+    { 
+      name: "TaskBolt-Modern Task Management UI(Web App)", 
+      description: "TaskBolt is a sleek and modern task management interface designed and developed to make productivity effortless.This UI combines a clean dark theme, intuitive navigation, and neatly organized task lists with features like search, priority selection, and tag categorization.", 
+      image: "/images/js-projects.png", 
+      link: "https://www.figma.com/community/file/1536636654993025741/taskbolt-design" 
     },
   ], 
 
@@ -198,8 +295,11 @@ export default function App() {
 
   // Hero Section
   const Hero = () => (
-    <section id="home" className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-20">
+    <section id="home" className="min-h-screen bg-slate-900 text-white flex items-center justify-center relative overflow-hidden">
+      {/* Starry Blob Background */}
+      <BlobBackground />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center py-20 relative z-10"> {/* Added z-10 to keep content above blobs */}
         <div className="max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-tight mb-4">
             Hi, I'm <span className="text-cyan-400">{portfolioData.name}</span>
@@ -233,7 +333,7 @@ export default function App() {
 
   // About Section
   const About = () => (
-    <section id="about" className="py-20 bg-slate-800">
+    <section id="about" className="py-20 bg-slate-800 my-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title="About Me" subtitle="A little bit about my journey" />
         <div className="flex flex-col md:flex-row items-center gap-10 lg:gap-16">
@@ -258,7 +358,7 @@ export default function App() {
 
   // Skills Section
   const Skills = () => (
-    <section id="skills" className="py-20 bg-slate-900">
+    <section id="skills" className="py-20 bg-slate-900 my-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <SectionTitle title="My Skills" subtitle="Technologies and tools I work with" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -285,33 +385,36 @@ export default function App() {
     </section>
   );
 
-  // Projects Section
+// Projects Section
   const Projects = () => (
-  <section id="projects" className="py-20 bg-slate-800">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <SectionTitle title="My Projects" subtitle="A selection of my work" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {portfolioData.projects.map((project, index) => (
-          <div key={index} className="bg-slate-700 rounded-lg overflow-hidden shadow-lg group transform transition-transform duration-300 hover:-translate-y-2">
-            <img src={project.image} alt={project.name} className="w-full h-48 object-cover" />
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
-              <p className="text-gray-400 mb-4">{project.description}</p>
-              <a 
-                href={project.link} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-block bg-sky-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-sky-600 transition-colors"
-              >
-                View Project ↗️
-              </a>
+    <section id="projects" className="py-20 bg-slate-800">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <SectionTitle title="My Projects" subtitle="A selection of my work" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {portfolioData.projects.map((project, index) => (
+            <div key={index} className="bg-slate-700 rounded-lg overflow-hidden shadow-lg group transform transition-transform duration-300 hover:-translate-y-2 flex flex-col">
+              <img src={project.image} alt={project.name} className="w-full h-48 object-cover" onError={(e) => { e.target.onerror = null; e.target.src='https://placehold.co/600x400/1e293b/ffffff?text=Image+Error'; }} />
+              <div className="p-6 flex flex-col flex-grow">
+                <h3 className="text-xl font-bold text-white mb-2">{project.name}</h3>
+                <p className="text-gray-400 mb-4">{project.description}</p>
+                <div className="mt-auto text-center pt-4">
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-block bg-sky-500 text-white font-semibold py-2 px-4 rounded-full hover:bg-sky-600 transition-colors"
+                  >
+                    View Project ↗️
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+
 
   // Experience & Education Section
   const Experience = () => (

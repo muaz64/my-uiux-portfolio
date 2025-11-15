@@ -73,6 +73,16 @@ export const portfolioData = {
   ], 
   experience: [
     {
+      role: "Professional Training",
+      organization: "45-Day Training in Product Design & Development | Taf Technology",
+      duration: "Oct, 2025",
+      responsibilities: [
+        "Completed intensive training focused on full-cycle project management and design-to-development workflow.",
+        "Gained practical knowledge in UX research application, advanced UI principles, and frontend-to-backend process understanding.",
+        "Focused heavily on cross-functional collaboration between design and engineering teams through project case studies.",
+      ]
+    },
+    {
       role: "Press & Publicity Secretary",
       organization: "EEE Club, IIUC",
       duration: "Jan 2023 - Jun 2023",

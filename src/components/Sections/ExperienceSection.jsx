@@ -4,15 +4,16 @@ import SectionTitle from '../Utilities/SectionTitle';
 const ExperienceSection = ({ data }) => (
   <section id="experience" className="py-20 bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionTitle title="My Journey" subtitle="Involvement & Education" />
+          <SectionTitle title="My Journey" subtitle="Experience, Training & Education" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
               {/* Experience Column */}
               <div>
                   <h3 className="text-2xl font-bold text-white mb-8 text-center lg:text-left flex items-center justify-center lg:justify-start gap-2">
                       <Briefcase className="text-cyan-400" />
-                      INVOLVEMENT
+                      EXPERIENCE & TRAINING
                   </h3>
                   <div className="relative border-l-2 border-cyan-500 pl-6 sm:pl-8 space-y-12">
+                      {/* This map will now correctly include the new TRAINING entry */}
                       {data.experience.map((exp, index) => (
                           <div key={index} className="relative">
                               <div className="absolute -left-[39px] sm:-left-[42px] top-1.5 w-4 h-4 bg-cyan-500 rounded-full border-4 border-slate-900"></div>
@@ -26,7 +27,7 @@ const ExperienceSection = ({ data }) => (
                       ))}
                   </div>
               </div>
-              {/* Education Column */}
+              {/* Education Column (Remains unchanged) */}
               <div>
                   <h3 className="text-2xl font-bold text-white mb-8 text-center lg:text-left flex items-center justify-center lg:justify-start gap-2">
                       <Star className="text-cyan-400" />

@@ -22,6 +22,7 @@ export const portfolioData = {
     linkedin: "https://linkedin.com/in/muaz-muhammad",
     github: "https://github.com/muaz-muhammad",
     figma: "https://www.figma.com/@muazmuhammad",
+    dribbble: "https://dribbble.com/muaz2024",
   },
   summary: "Creative and detail-oriented UI/UX Designer with a strong foundation in front-end development and user-centered design principles. Experienced in designing engaging, intuitive digital experiences with Figma, and building responsive, accessible interfaces using HTML, CSS (Bootstrap, Tailwind), and JavaScript (React.js, jQuery). Adept at wireframing, prototyping, and translating user needs into seamless web experiences.",
   skills: {

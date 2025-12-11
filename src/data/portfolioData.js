@@ -24,7 +24,7 @@ export const portfolioData = {
     figma: "https://www.figma.com/@muazmuhammad",
     dribbble: "https://dribbble.com/muaz2024",
   },
-  summary: "Creative and detail-oriented UI/UX Designer with a strong foundation in front-end development and user-centered design principles. Experienced in designing engaging, intuitive digital experiences with Figma, and building responsive, accessible interfaces using HTML, CSS (Bootstrap, Tailwind), and JavaScript (React.js, jQuery). Adept at wireframing, prototyping, and translating user needs into seamless web experiences.",
+  summary: "I am a versatile professional with a strong foundation in UI/UX Design, specializing in creating engaging and intuitive digital products using tools like Figma for wireframing, prototyping, and design systems, complemented by hands-on Frontend Development expertise in React.js, Tailwind CSS, and JavaScript. My portfolio features six diverse projects—from e-commerce and SaaS landing pages to mobile applications—demonstr highlighting my ability to translate user needs into seamless experiences. Beyond technical execution, my background includes official roles in event organization and publicity at IIUC, alongside recent, intensive Product Design & Development training from Taf Technology, demonstrating my commitment to full-cycle project management and effective cross-functional collaboration between design and engineering teams.",
   skills: {
     design: ["Figma", "Adobe XD (basic)", "Canva", "Wireframing", "Prototyping", "Responsive Design", "User Flows", "Accessibility", "Design Systems"],
     frontend: ["HTML5", "CSS3", "Bootstrap", "Tailwind CSS", "JavaScript", "jQuery", "React.js"],
